@@ -1,0 +1,5 @@
+The extend operator will create calculated columns and append the new columns to the result set.
+
+SecurityEvent
+| where ProcessName != "" and Process != ""
+| extend StartDir =  substring(ProcessName,0, string_size(ProcessName)-string_size(Process))
