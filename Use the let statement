@@ -1,0 +1,7 @@
+Let statements bind names to expressions. For the rest of the scope, where the let statement appear, the name refers to its bound value. Let statements improve modularity and reuse since they allow you to break a potentially complex expression into multiple parts. Each part is bound to a name through the let statement, and together they compose the whole. Let statements allow for the creation of user-defined functions and views. The views are expressions whose results look like a new table.
+
+let timeOffset = 7d;
+let discardEventId = 4688;
+SecurityEvent
+| where TimeGenerated > ago(timeOffset*2) and TimeGenerated < ago(timeOffset)
+| where EventID != discardEventId
