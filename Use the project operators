@@ -1,0 +1,25 @@
+The project operators control what columns to include, add, remove, or rename in the result set of a statement.
+The project operator will limit the size of the result set, which will increase performance.
+
+SecurityEvent
+| project Computer, Account
+
+
+SecurityEvent
+| where ProcessName != "" and Process != ""
+| extend StartDir =  substring(ProcessName,0, string_size(ProcessName)-string_size(Process))
+| order by StartDir desc, Process asc
+| project Process, StartDir
+
+
+Project-away operator
+
+Select what columns from the input to exclude from the output.
+
+This example builds from our previous extend and order by operators. The project-away will remove the unnecessary column from the result set. In this example, we'll remove the ProcessName column.
+
+SecurityEvent
+| where ProcessName != "" and Process != ""
+| extend StartDir =  substring(ProcessName,0, string_size(ProcessName)-string_size(Process))
+| order by StartDir desc, Process asc
+| project-away ProcessName
