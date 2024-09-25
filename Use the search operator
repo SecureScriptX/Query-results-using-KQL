@@ -1,0 +1,5 @@
+The search operator provides a multi-table/multi-column search experience. Although the search operator is easy to use, when compared to the where operator it's inefficient. Even with this inefficiency, you can use search to find data when unsure which table or column to filter.
+
+search "err"
+
+search in (SecurityEvent,SecurityAlert,A*) "err"
