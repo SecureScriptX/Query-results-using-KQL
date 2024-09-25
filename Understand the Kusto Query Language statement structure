@@ -1,0 +1,19 @@
+## KQL Query Overview
+
+A KQL (Kusto Query Language) query is a **read-only** request to process data and return results. It is written in plain text, utilizing a **data-flow model** designed for simplicity in both readability and automation. The query syntax is organized similarly to SQL, structured around **schema entities** such as databases, tables, and columns.
+
+### Query Structure
+
+A query is composed of a sequence of **query statements**. At least one of these must be a **tabular expression statement** that organizes data into a table-like structure of rows and columns. These tabular expression statements are responsible for generating the query's final output.
+
+The flow of tabular expression statements is achieved by passing data through **tabular query operators**, starting from the data source and moving through transformation operators. These operators are connected by the pipe (`|`) delimiter.
+
+### Example Query
+
+The following example demonstrates a simple KQL query:
+
+kql
+SecurityEvent
+| where EventID == 4688
+| summarize Count = count() by Account
+| take 10
